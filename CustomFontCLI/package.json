@@ -1,5 +1,5 @@
 {
-  "name": "AwesomeProject",
+  "name": "CustomFontCLI",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,14 +10,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.5.1",
-    "@fortawesome/free-brands-svg-icons": "^6.5.1",
-    "@fortawesome/free-regular-svg-icons": "^6.5.1",
-    "@fortawesome/free-solid-svg-icons": "^6.5.1",
-    "@fortawesome/react-fontawesome": "^0.2.0",
     "react": "18.2.0",
-    "react-native": "0.73.6",
-    "react-native-vector-icons": "^10.0.3"
+    "react-native": "0.73.6"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
