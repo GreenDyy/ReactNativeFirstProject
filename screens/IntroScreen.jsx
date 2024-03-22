@@ -13,7 +13,7 @@ import { images, icons } from '../constants/manager'
 import UIButton from "../components/uibutton";
 
 
-function IntroScreen() {
+function IntroScreen({navigation}) {
     return (
         <ImageBackground
             source={images.background}
@@ -44,16 +44,12 @@ function IntroScreen() {
                         flex: 0.8,
                     }}>
                     <Image source={images.cat} style={styles.logoTo} />
-                    <Text style={[styles.title, styles.customFont]}>Wellcome To Cat Coffe</Text>
+                    <Text style={[styles.title, styles.customFont]}>Wellcome To Cat Coffee!</Text>
                     <Text style={styles.desc}>
                         Với mỗi phút giây mà bạn dành để thưởng thức cafe, đó chính là một khoảnh khắc đẹp nhất
                     </Text>
 
-                    <UIButton event={() => alert('Xin chào')} title='JOIN ME' isSelected={true}></UIButton>
-                    <UIButton event={
-                        () => isSelected=true
-                        } title='LOGIN'></UIButton>
-                    <UIButton event={() => alert('Xin chào')} title='SIGN UP'></UIButton>
+                    <UIButton event={() => navigation.navigate('Login')} title='Get Started!'></UIButton>
 
                 </View>
 

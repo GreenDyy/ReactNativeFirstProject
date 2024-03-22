@@ -3,7 +3,7 @@ import { Text, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 
-function UIButton({ event, title, isSelected }) {
+function UIButton({ event, title }) {
     return (
         <TouchableOpacity
             onPress={event}
@@ -19,20 +19,12 @@ function UIButton({ event, title, isSelected }) {
                 flexDirection: 'row',
                 marginHorizontal: 10,
                 marginVertical: 10,
-                backgroundColor: isSelected == true ? 'white' : null
             }}>
-            {isSelected == true &&
-                <Icon name="rocket" size={20} style={{
-                    color: 'green',
-                    marginRight: 10,
+            <Icon name="rocket" size={20} style={{ color: 'white', marginRight: 10 }} />
 
-                }} />}
-
-            <Text style={{
-                color: isSelected == true ? 'green' : 'white',
-                fontWeight: 'bold',
-
-            }}>{title}</Text>
+            <Text style={{ color: 'white', fontWeight: 'bold', }}>
+                {title}
+            </Text>
 
         </TouchableOpacity>
     )
