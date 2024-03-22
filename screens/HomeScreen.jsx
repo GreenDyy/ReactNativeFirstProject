@@ -23,7 +23,7 @@ function HomeScreen({ navigation }) {
             <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
 
                 <View style={{ height: '10%', backgroundColor: 'purple', flexDirection: 'row', padding: 10, alignItems: 'center' }}>
-                    <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+                    <TouchableOpacity onPress={() => navigation.goBack()}>
                         <Icon name={'arrow-left'} size={20} style={{ color: 'white' }} />
                     </TouchableOpacity>
 
