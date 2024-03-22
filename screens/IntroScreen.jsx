@@ -6,12 +6,11 @@ import {
     Image,
     ImageBackground,
     StyleSheet,
-    TouchableOpacity,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5'
 
 //import ảnh
-import {images, icons} from '../constants/constantmanager'
+import { images, icons } from '../constants/manager'
+import UIButton from "../components/uibutton";
 
 
 function IntroScreen() {
@@ -47,30 +46,15 @@ function IntroScreen() {
                     <Image source={images.cat} style={styles.logoTo} />
                     <Text style={[styles.title, styles.customFont]}>Wellcome To Cat Coffe</Text>
                     <Text style={styles.desc}>
-                        Với mỗi phút giây mà bạn dành để thưởng thức cafe, đó chính là một khoảnh khắc đẹp nhất 
+                        Với mỗi phút giây mà bạn dành để thưởng thức cafe, đó chính là một khoảnh khắc đẹp nhất
                     </Text>
 
-                    <TouchableOpacity style={{
-                        height: 45, 
-                        width: 200,
-                        borderColor: 'white',
-                        borderWidth: 1,
-                        borderRadius: 10,
-                        marginHorizontal: 10,
-                        marginVertical: 30,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        paddingHorizontal: 10,
-                        //backgroundColor: 'white',
-                    }}>
-                        {/* <Icon name={'check-circle'} style={{color:'black'}}/> */}
-                        <Text style={{
-                            color: 'white',
-                            fontWeight:'bold',
+                    <UIButton event={() => alert('Xin chào')} title='JOIN ME' isSelected={true}></UIButton>
+                    <UIButton event={
+                        () => isSelected=true
+                        } title='LOGIN'></UIButton>
+                    <UIButton event={() => alert('Xin chào')} title='SIGN UP'></UIButton>
 
-                        }}>JOIN ME!</Text>
-
-                    </TouchableOpacity>
                 </View>
 
             </View>
