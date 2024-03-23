@@ -17,6 +17,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 function LoginScreen({ navigation }) {
 
     const [passwordVisible, setPasswordVisible] = useState(false);
+    const [userName, setUserName] = useState('');
     return (
 
         <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
@@ -46,7 +47,10 @@ function LoginScreen({ navigation }) {
                             <Text style={{ fontWeight: 'bold', color: 'green', marginLeft: 5 }}>Tên đăng nhập</Text>
                         </View>
 
-                        <TextInput style={{ borderBottomWidth: 1, paddingVertical: 0 }} autoCapitalize="none" />
+                        <TextInput style={{ borderBottomWidth: 1, paddingVertical: 0 }}
+                            autoCapitalize="none"
+                            value={userName}
+                            onChangeText={setUserName} />
 
                         <View style={{ marginTop: 15 }}>
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -69,7 +73,10 @@ function LoginScreen({ navigation }) {
                         {/* Button*/}
                         <View style={{ marginTop: 15, alignItems: 'center', justifyContent: 'center' }}>
                             <TouchableOpacity style={{ borderRadius: 10, borderWidth: 1, borderColor: 'green', width: '60%', paddingVertical: 5 }}
-                                onPress={() => navigation.navigate('Home')}>
+                                onPress={() => {
+                                    navigation.navigate('Home', { name: userName })
+                                }
+                                }>
                                 <Text style={{ textAlign: 'center', color: 'green', fontWeight: 'bold', fontSize: 18 }}>Đăng nhập</Text>
                             </TouchableOpacity>
 

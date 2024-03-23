@@ -14,7 +14,8 @@ import UIButton from "../components/uibutton";
 import { images, icons } from '../constants/manager'
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-function HomeScreen({ navigation }) {
+function HomeScreen({ route, navigation }) {
+    const {name} = route.params
     return (
 
         <ImageBackground source={images.background} style={{ flex: 1 }}>
@@ -28,7 +29,7 @@ function HomeScreen({ navigation }) {
                     </TouchableOpacity>
 
                     <TouchableOpacity style={{ position: 'absolute', right: 15 }}
-                        onPress ={() => navigation.navigate('Intro')}>
+                        onPress={() => navigation.navigate('Intro')}>
                         <Icon name={'tree'} size={20} style={{ color: 'white' }} />
                     </TouchableOpacity>
                 </View>
@@ -36,7 +37,7 @@ function HomeScreen({ navigation }) {
                 {/* body */}
                 <View style={{ height: '80%', padding: 20 }}>
 
-                    <Text>Đây là Home</Text>
+                    <Text style={{ textAlign: 'center', color: 'black', fontWeight: 'bold' }}>Xin chào {name}</Text>
                     <View style={{ flexDirection: 'row', height: '100%', backgroundColor: 'orange', justifyContent: 'space-around' }}>
                         <View style={{ width: '20%', aspectRatio: 1, backgroundColor: 'red' }}>
 
