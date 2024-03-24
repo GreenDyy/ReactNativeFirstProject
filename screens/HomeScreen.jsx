@@ -18,19 +18,23 @@ function HomeScreen({ route, navigation }) {
     const {name} = route.params
     return (
 
+        
         <ImageBackground source={images.background} style={{ flex: 1 }}>
             <StatusBar barStyle={'light-content'} />
 
             <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
 
-                <View style={{ height: '10%', backgroundColor: 'purple', flexDirection: 'row', padding: 10, alignItems: 'center' }}>
-                    <TouchableOpacity onPress={() => navigation.goBack()}>
+                <View style={{ height: '10%', flexDirection: 'row', padding: 10, alignItems: 'center' }}>
+                    {/* <TouchableOpacity onPress={() => navigation.goBack()}>
                         <Icon name={'arrow-left'} size={20} style={{ color: 'white' }} />
+                    </TouchableOpacity> */}
+                    <TouchableOpacity onPress={() => navigation.navigate('Drawer')}>
+                        <Icon name={'bars'} size={20} style={{ color: 'black' }} />
                     </TouchableOpacity>
 
                     <TouchableOpacity style={{ position: 'absolute', right: 15 }}
-                        onPress={() => navigation.navigate('Intro')}>
-                        <Icon name={'tree'} size={20} style={{ color: 'white' }} />
+                        onPress={() => navigation.openDrawer()}>
+                        <Icon name={'tree'} size={20} style={{ color: 'black' }} />
                     </TouchableOpacity>
                 </View>
 
