@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import { Text, TouchableOpacity } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import { Text, TouchableOpacity, Image } from 'react-native'
+import { icons } from '../constants/manager'
 
 
 function UIButton({ event, title }) {
@@ -19,8 +19,7 @@ function UIButton({ event, title }) {
                 flexDirection: 'row',
                 marginHorizontal: 10,
                 marginVertical: 10,
-            }}>
-            <Icon name="rocket" size={20} style={{ color: 'white', marginRight: 10 }} />
+            }}>       
 
             <Text style={{ color: 'white', fontWeight: 'bold', }}>
                 {title}

@@ -12,8 +12,7 @@ import {
 import { images, icons } from '../constants/manager'
 import UIButton from "../components/uibutton";
 
-
-function IntroScreen({navigation}) {
+function IntroScreen({ navigation }) {
     return (
         <ImageBackground
             source={images.background}
@@ -49,7 +48,7 @@ function IntroScreen({navigation}) {
                         Với mỗi phút giây mà bạn dành để thưởng thức cafe, đó chính là một khoảnh khắc đẹp nhất
                     </Text>
 
-                    <UIButton event={() => navigation.push('Login')} title='Get Started!'></UIButton>
+                    <UIButton event={() => navigation.navigate('Login')} title='Get Started!'></UIButton>
 
                 </View>
 

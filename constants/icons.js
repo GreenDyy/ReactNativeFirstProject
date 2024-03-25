@@ -1,4 +1,15 @@
 export default {
     logo: require('../assest/icons/latte.png'),
-    logoTo: require('../assest/icons/logocoffee.png')
+    logoTo: require('../assest/icons/logocoffee.png'),
+    home: require('../assest/icons/home.png'),
+    eye: require('../assest/icons/eye.png'),
+    slasheye: require('../assest/icons/slash-eye.png'),
+    heart: require('../assest/icons/heart.png'),
+    cart: require('../assest/icons/cart.png'),
+    profile: require('../assest/icons/profile.png'),
+    notification: require('../assest/icons/notification.png'),
+    nike: require('../assest/icons/nike.png'),
+    jordan: require('../assest/icons/jordan.png'),
+    adidas: require('../assest/icons/adidas.png'),
+    puma: require('../assest/icons/puma.png'),
 }

@@ -10,9 +10,7 @@ import {
     StatusBar,
     KeyboardAvoidingView,
 } from 'react-native';
-import UIButton from "../components/uibutton";
 import { images, icons } from '../constants/manager'
-import Icon from 'react-native-vector-icons/FontAwesome5';
 
 function LoginScreen({ navigation }) {
 
@@ -43,7 +41,7 @@ function LoginScreen({ navigation }) {
                     }}>
 
                         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                            <Icon name={'cat'} size={15} style={{ color: 'green' }} />
+                           
                             <Text style={{ fontWeight: 'bold', color: 'green', marginLeft: 5 }}>Tên đăng nhập</Text>
                         </View>
 
@@ -54,7 +52,7 @@ function LoginScreen({ navigation }) {
 
                         <View style={{ marginTop: 15 }}>
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                <Icon name={'lock'} size={15} style={{ color: 'green' }} />
+                           
                                 <Text style={{ fontWeight: 'bold', color: 'green', marginLeft: 5 }}>Mật khẩu</Text>
                             </View>
 
@@ -63,7 +61,7 @@ function LoginScreen({ navigation }) {
                                     autoCapitalize="none"
                                     secureTextEntry={passwordVisible} />
                                 <TouchableOpacity onPress={() => setPasswordVisible(!passwordVisible)}>
-                                    <Icon name={passwordVisible ? 'eye-slash' : 'eye'} size={15} style={{ position: 'absolute', right: 0, marginTop: -5 }} />
+                                    <Image source={passwordVisible ? icons.slasheye : icons.eye} style={{height: 20, width: 20 ,position: 'absolute', right: 0, marginTop: -7 }}/>
                                 </TouchableOpacity>
 
                             </View>
