@@ -12,4 +12,8 @@ export default {
     jordan: require('../assest/icons/jordan.png'),
     adidas: require('../assest/icons/adidas.png'),
     puma: require('../assest/icons/puma.png'),
+    search: require('../assest/icons/search.png'),
+    back: require('../assest/icons/back.png'),
+    more: require('../assest/icons/more.png'),
+    down: require('../assest/icons/down.png'),
 }

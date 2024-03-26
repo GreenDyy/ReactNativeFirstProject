@@ -18,30 +18,28 @@ function LoginScreen({ navigation }) {
     const [userName, setUserName] = useState('');
     return (
 
-        <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
+        <View style={{ flex: 1 }} behavior="padding">
             <ImageBackground source={images.background} resizeMode="cover" style={{ flex: 1 }}>
                 <StatusBar barStyle={'light-content'} />
 
                 <SafeAreaView style={{ flex: 1 }}>
                     {/* top */}
-                    <View style={{ height: '40%', justifyContent: 'center', alignItems: 'center' }}>
-                        <Text style={{ fontSize: 42, fontWeight: 'bold', color: 'white' }}>
+                    <View style={{justifyContent:'center', alignItems:'center'}}>
+                        <Text style={{ fontSize: 42, fontWeight: 'bold', color: 'white'}}>
                             Coffee
                         </Text>
-                        <Image source={icons.logoTo} resizeMode="contain" style={{ width: '50%', height: '50%' }} />
+                        <Image source={icons.logoTo} resizeMode="contain" style={{ width: '35%', height: '35%' }} />
                     </View>
 
                     {/* mid */}
                     <View style={{
                         backgroundColor: 'white',
                         padding: 20,
-                        aspectRatio: 1,
                         borderRadius: 10,
-                        marginHorizontal: 50
+                        marginHorizontal: 50,
                     }}>
 
                         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                           
                             <Text style={{ fontWeight: 'bold', color: 'green', marginLeft: 5 }}>Tên đăng nhập</Text>
                         </View>
 
@@ -52,7 +50,7 @@ function LoginScreen({ navigation }) {
 
                         <View style={{ marginTop: 15 }}>
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                           
+
                                 <Text style={{ fontWeight: 'bold', color: 'green', marginLeft: 5 }}>Mật khẩu</Text>
                             </View>
 
@@ -61,7 +59,7 @@ function LoginScreen({ navigation }) {
                                     autoCapitalize="none"
                                     secureTextEntry={passwordVisible} />
                                 <TouchableOpacity onPress={() => setPasswordVisible(!passwordVisible)}>
-                                    <Image source={passwordVisible ? icons.slasheye : icons.eye} style={{height: 20, width: 20 ,position: 'absolute', right: 0, marginTop: -7 }}/>
+                                    <Image source={passwordVisible ? icons.slasheye : icons.eye} style={{ height: 20, width: 20, position: 'absolute', right: 0, marginTop: -7 }} />
                                 </TouchableOpacity>
 
                             </View>
@@ -89,18 +87,11 @@ function LoginScreen({ navigation }) {
 
                     </View>
 
-                    {/* bottom */}
-                    <View style={{}}>
-
-                    </View>
-
                 </SafeAreaView>
 
             </ImageBackground>
-        </KeyboardAvoidingView>
-
+        </View>
     )
 }
-
 
 export default LoginScreen;

@@ -16,7 +16,7 @@ function CartScreen({ navigation }) {
     return (
 
         <View>
-            <Text style={{ fontWeight: 'bold', fontSize: 30, textAlign: 'center' }}>Profile</Text>
+            <Text style={{ fontWeight: 'bold', fontSize: 30, textAlign: 'center' }}>Cart</Text>
         </View>
     )
 }

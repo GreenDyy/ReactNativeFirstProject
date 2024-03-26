@@ -12,6 +12,8 @@ import IntroScreen from './IntroScreen';
 import ProfileScreen from './ProfileScreen';
 import FavoriteScreen from './FavoriteSceen';
 import CartScreen from './CartScreen';
+import NotificationScreen from './NotificationScreen';
+import DetailsScreen from './DetailsScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -56,6 +58,8 @@ function App() {
         <Stack.Screen name="Intro" component={IntroScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Home" component={BottomTabHome} />
+        <Stack.Screen name="Notification" component={NotificationScreen} />
+        <Stack.Screen name="Details" component={DetailsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   )

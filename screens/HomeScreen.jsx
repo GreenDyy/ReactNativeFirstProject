@@ -12,60 +12,52 @@ import {
     StyleSheet,
     FlatList,
 } from 'react-native'
-import { images, icons } from '../constants/manager'
-import { green } from "react-native-reanimated/lib/typescript/reanimated2/Colors";
+import { icons } from '../constants/manager'
+import DATASHOE from '../datas/datashoe'
 
-const DATA = [
-    {
-        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-        name: 'Nike Air Max 90',
-        price: 239.80,
-        image: icons.adidas,
-        brand: icons.adidas,
-    },
-    {
-        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-        name: 'Nike Air Max 80',
-        price: 239.80,
-        image: icons.adidas,
-        brand: icons.adidas,
-    },
-    {
-        id: '58694a0f-3da1-471f-bd96-145571e29d72',
-        name: 'Jordan Air',
-        price: 239.80,
-        image: icons.adidas,
-        brand: icons.adidas,
-    },
-];
 
-const Item = ({ price, name, image, brand }) => (
-    <View style={{ padding: 10, margin: 20, width: '30%', height: 100 }}>
-        <View style={{backgroundColor: '#CCCCCC', borderRadius: 20}}>
+const ItemColumn1 = ({ price, name, image, brand, onPress }) => (
+    <TouchableOpacity style={{ marginTop: 10 }} onPress={onPress}>
+        <View style={{ backgroundColor: '#CCCCCC', borderRadius: 20, height: 150, width: 140, alignItems: 'center', justifyContent: 'center' }}>
             <Image source={image} resizeMode="stretch" />
-            <Image source={brand} resizeMode="stretch" style={{position: "relative", right:5, bottom: 5}} />
+            <Image source={brand} resizeMode="stretch" style={{ position: 'absolute', right: 10, bottom: 15, tintColor: 'gray' }} />
         </View>
 
-        <Text style={{}}>{price}</Text>
-        <Text style={{}}>{name}</Text>
-    </View>
+        <View style={{ marginTop: 10 }}>
+            <Text style={{ fontWeight: 'bold', color: 'black' }}>${price}</Text>
+            <Text style={{}}>{name}</Text>
+        </View>
+    </TouchableOpacity>
+);
+
+const ItemColumn2 = ({ price, name, image, brand, onPress }) => (
+    <TouchableOpacity style={{ marginTop: 30, right: 0, position: 'absolute' }} onPress={onPress}>
+        <View style={{ backgroundColor: '#CCCCCC', borderRadius: 20, height: 150, width: 140, alignItems: 'center', justifyContent: 'center' }}>
+            <Image source={image} resizeMode="stretch" />
+            <Image source={brand} resizeMode="stretch" style={{ position: 'absolute', right: 10, bottom: 15, tintColor: 'gray' }} />
+        </View>
+        <View style={{ marginTop: 10 }}>
+            <Text style={{ fontWeight: 'bold', color: 'black' }}>${price}</Text>
+            <Text style={{}}>{name}</Text>
+        </View>
+    </TouchableOpacity>
 );
 
 function HomeScreen({ navigation }) {
-    // const { name } = route.params
-    return (
-        <View style={{ flex: 1, padding: 20 }}>
-            <StatusBar barStyle={'light-content'} />
+    const [searchText, setSearchText] = useState('')
 
+    return (
+        <View style={{ flex: 1, paddingHorizontal: 30}}>
+            <StatusBar barStyle={'light-content'} />
             <SafeAreaView style={{ flex: 1 }}>
 
-                <View style={{ height: '10%', flexDirection: 'row', alignItems: 'center' }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 10, justifyContent: 'space-between' }}>
                     <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'black' }}>
-                        Sneakrs
+                        Sneakers
                     </Text>
 
-                    <TouchableOpacity style={{ position: 'absolute', right: 15 }}
-                        onPress={() => navigation.navigate('MyTabs')}>
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate('Notification')}>
                         <Image source={icons.notification} resizeMode="stretch" style={{ tintColor: 'gray' }} />
 
                     </TouchableOpacity>
@@ -73,13 +65,18 @@ function HomeScreen({ navigation }) {
                 </View>
 
                 {/* SearchBar */}
-                <TouchableOpacity style={{ height: '8%', alignItems: 'center', flexDirection: 'row', borderRadius: 20, backgroundColor: '#CCCCCC' }}>
-                    <Image source={icons.heart} style={{ marginLeft: 8 }} />
-                    <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 8 }}>Search</Text>
-                </TouchableOpacity>
+                <View style={{ alignItems: 'center', flexDirection: 'row', borderRadius: 20, backgroundColor: '#CCCCCC' }}>
+                    <Image source={icons.search} style={{ marginLeft: 8 }} />
+                    <TextInput
+                        style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 8 }}
+                        placeholder="Search"
+                        onChangeText={setSearchText}
+                        value={searchText}
+                    />
+                </View>
 
                 {/* Top Brand */}
-                <View style={{ height: '20%', marginVertical: 20 }}>
+                <View style={{ marginVertical: 20 }}>
                     <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'black' }}>Top Brands</Text>
 
                     <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 15 }}>
@@ -103,11 +100,26 @@ function HomeScreen({ navigation }) {
                 </View>
 
                 {/* Polular */}
-                <View style={{ height: '80%' }}>
+                <View style={{}}>
+                    <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'black' }}>Polular</Text>
                     <FlatList
+                    contentContainerStyle={{ paddingBottom: 300 }} 
+                        showsVerticalScrollIndicator={false}
                         numColumns={2}
-                        data={DATA}
-                        renderItem={({ item }) => <Item name={item.name} price={item.price} image={item.image} brand={item.brand} />}
+                        data={DATASHOE}
+                        renderItem={({ item, index }) => (
+                            index % 2 === 0 ?
+                                <ItemColumn1 name={item.name} price={item.price} image={item.image} brand={item.brand}
+                                    onPress={() => {
+                                        navigation.navigate('Details', { id: item.id, name: item.name, price: item.price, brand: item.brand, image: item.image, desc: item.desc })
+                                    }}
+                                /> :
+                                <ItemColumn2 name={item.name} price={item.price} image={item.image} brand={item.brand}
+                                    onPress={() => {
+                                        navigation.navigate('Details', { id: item.id, name: item.name, price: item.price, brand: item.brand, image: item.image, desc: item.desc })
+                                    }}
+                                />
+                        )}
                         keyExtractor={item => item.id}
                     />
                 </View>
