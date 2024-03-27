@@ -5,6 +5,7 @@
             name: 'Nike Air Max 90',
             price: 239.80,
             image: images.shoe1,
+            image2: images.shoe1,
             brand: icons.adidas,
             desc: 'A pillar of sneaker culture, the Nike Air Max 90 remains one of the most significant designs since the brand’s founding. And while its OG colorways are some of the most significant. A pillar of sneaker culture, the Nike Air Max 90 remains one of the most significant designs since the brand’s founding.'
         },
@@ -13,6 +14,7 @@
             name: 'Nike Air Max 80',
             price: 239.80,
             image: images.shoe2,
+            image2: images.shoe1,
             brand: icons.nike,
             desc: 'A pillar of sneaker culture, the Nike Air Max 90 remains one of the most significant designs since the brand’s founding. And while its OG colorways are some of the most significant.'
         },

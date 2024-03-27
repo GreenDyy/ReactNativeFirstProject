@@ -1,103 +1,77 @@
-import SelectDropdown from 'react-native-select-dropdown'
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import {
     Text,
-    TextInput,
     Image,
-    ImageBackground,
-    TouchableOpacity,
     View,
-    SafeAreaView,
-    StatusBar,
-    KeyboardAvoidingView,
+    Dimensions,
     StyleSheet,
+    ScrollView,
 } from 'react-native';
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { images } from '../constants/manager';
 
-const sizeShoes = [
-    { size: 13 },
-    { size: 14 },
-    { size: 15 },
-    { size: 16 },
-    { size: 17 },
-];
-function Test() {
+const Circle = ({ backgroundColor, size = 25 }) => {
     return (
-        <SelectDropdown
-            style={{ backgroundColor: 'green' }}
-            data={sizeShoes}
-            onSelect={(selectedItem, index) => {
-                console.log(selectedItem, index);
-            }}
-            renderButton={(selectedItem, isOpened) => {
-                return (
-                    <View style={{}}>
-                        <Text style={{}}>
-                            {(selectedItem && selectedItem.size) || 'Chọn size giày'}
-                        </Text>
-                    </View>
-                );
-            }}
-            renderItem={(item, index, isSelected) => {
-                return (
-                    <View style={{}}>
-                        <Text style={styles.dropdownItemTxtStyle}>{item.size}</Text>
-                    </View>
-                );
-            }}
-            showsVerticalScrollIndicator={false}
-            dropdownStyle={{ backgroundColor: 'green' }}
-        />
+        <View style={{ backgroundColor: backgroundColor, width: size, aspectRatio: 1, borderRadius: 999 }} />
     )
 }
 
+const WIDTH = Dimensions.get('window').width;
+const HEIGHT = Dimensions.get('window').height;
 
+const listImages = [
+    images.cat,
+    images.cat2, images.cat2, images.cat2, images.cat2, images.cat2,
+];
+
+function Test({ navigation }) {
+
+    useEffect(() => {
+        //load data
+        setImageList(listImages);
+    }, []);
+
+    const [imageActive, setImageActive] = useState(0);
+    const [imageList, setImageList] = useState([]);
+
+    return (
+        <View style={{ flex: 1 }}>
+
+            <View style={{ width: WIDTH, height: HEIGHT * 0.25 }}>
+                <ScrollView
+                    horizontal
+                    pagingEnabled
+                    contentContainerStyle={{ width: WIDTH * imageList.length, height: HEIGHT * 0.25 }}
+                    onScroll={e => {
+                        const slide = Math.ceil(e.nativeEvent.contentOffset.x / WIDTH)
+                        setImageActive(slide)
+                    }}
+                >
+                    {imageList.map((image, index) => (
+                        <Image
+                            key={index}
+                            source={image}
+                            resizeMode="cover"
+                            style={{ width: WIDTH, height: HEIGHT * 0.25 }}
+                        />
+                    ))}
+                </ScrollView>
+
+                
+            </View>
+        </View>
+    )
+}
 
 const styles = StyleSheet.create({
-    dropdownButtonStyle: {
-        width: 200,
-        height: 50,
-        backgroundColor: '#E9ECEF',
-        borderRadius: 12,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingHorizontal: 12,
+    dot: {
+        color: 'green',
+        margin: 3,
     },
-    dropdownButtonTxtStyle: {
-        flex: 1,
-        fontSize: 18,
-        fontWeight: '500',
-        color: '#151E26',
-    },
-    dropdownButtonArrowStyle: {
-        fontSize: 28,
-    },
-    dropdownButtonIconStyle: {
-        fontSize: 28,
-        marginRight: 8,
-    },
-    dropdownMenuStyle: {
-        backgroundColor: '#E9ECEF',
-        borderRadius: 8,
-    },
-    dropdownItemStyle: {
-        width: '100%',
-        flexDirection: 'row',
-        paddingHorizontal: 12,
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingVertical: 8,
-    },
-    dropdownItemTxtStyle: {
-        flex: 1,
-        fontSize: 18,
-        fontWeight: '500',
-        color: '#151E26',
-    },
-    dropdownItemIconStyle: {
-        fontSize: 28,
-        marginRight: 8,
+    dotActive: {
+        color: 'black',
+        margin: 3,
     },
 });
 
-export default Test
+export default Test;

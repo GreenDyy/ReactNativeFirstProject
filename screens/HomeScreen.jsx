@@ -47,7 +47,7 @@ function HomeScreen({ navigation }) {
     const [searchText, setSearchText] = useState('')
 
     return (
-        <View style={{ flex: 1, paddingHorizontal: 30}}>
+        <View style={{ flex: 1, paddingHorizontal: 30 }}>
             <StatusBar barStyle={'light-content'} />
             <SafeAreaView style={{ flex: 1 }}>
 
@@ -103,7 +103,7 @@ function HomeScreen({ navigation }) {
                 <View style={{}}>
                     <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'black' }}>Polular</Text>
                     <FlatList
-                    contentContainerStyle={{ paddingBottom: 300 }} 
+                        contentContainerStyle={{ paddingBottom: 300 }}
                         showsVerticalScrollIndicator={false}
                         numColumns={2}
                         data={DATASHOE}
@@ -111,12 +111,26 @@ function HomeScreen({ navigation }) {
                             index % 2 === 0 ?
                                 <ItemColumn1 name={item.name} price={item.price} image={item.image} brand={item.brand}
                                     onPress={() => {
-                                        navigation.navigate('Details', { id: item.id, name: item.name, price: item.price, brand: item.brand, image: item.image, desc: item.desc })
+                                        navigation.navigate('Details', {
+                                            id: item.id,
+                                            name: item.name,
+                                            price: item.price,
+                                            brand: item.brand,
+                                            images: [item.image, item.image2],
+                                            desc: item.desc
+                                        })
                                     }}
                                 /> :
                                 <ItemColumn2 name={item.name} price={item.price} image={item.image} brand={item.brand}
                                     onPress={() => {
-                                        navigation.navigate('Details', { id: item.id, name: item.name, price: item.price, brand: item.brand, image: item.image, desc: item.desc })
+                                        navigation.navigate('Details', {
+                                            id: item.id,
+                                            name: item.name,
+                                            price: item.price,
+                                            brand: item.brand,
+                                            images: [item.image, item.image2],
+                                            desc: item.desc
+                                        })
                                     }}
                                 />
                         )}
